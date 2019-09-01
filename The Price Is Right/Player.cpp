@@ -1,5 +1,7 @@
 #include "Player.h"
 
+using namespace std;
+
 MenuChoices playerChoice()
 {
 	auto choice{ 0 };
@@ -15,6 +17,17 @@ MenuChoices playerChoice()
 	else {
 		return MenuChoices::QUIT;
 	}
+	switch (choice) {
+	case static_cast<int>(MenuChoices::PLAY) :
+		return MenuChoices::PLAY;
+		break;
+	case static_cast<int>(MenuChoices::SCORES) :
+		return MenuChoices::SCORES;
+		break;
+	default:
+		return MenuChoices::QUIT;
+		break;
+	}
 
 }
 
@@ -25,16 +38,17 @@ DifficultyChoices playerDifficulty()
 	cout << endl << "EASY (1)" << endl << "HARDER (2)" << endl << "HARDEST (3)" << endl;
 	cin >> choiceDifficulty;
 	switch (choiceDifficulty) {
-	case 1:
+	case static_cast<int>(DifficultyChoices::EASY):
 		return DifficultyChoices::EASY;
 		break;
-	case 2:
+	case static_cast<int>(DifficultyChoices::HARDER) :
 		return DifficultyChoices::HARDER;
 		break;
-	case 3:
+	case static_cast<int>(DifficultyChoices::HARDEST) :
 		return DifficultyChoices::HARDEST;
 		break;
 	default:
 		playerDifficulty();
+		break;
 	}
 }

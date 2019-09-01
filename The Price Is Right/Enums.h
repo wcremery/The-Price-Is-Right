@@ -3,7 +3,8 @@
 enum class MenuChoices
 {
 	PLAY = 0,
-	QUIT = 1
+	SCORES = 1,
+	QUIT = 2
 };
 
 enum class DifficultyChoices
