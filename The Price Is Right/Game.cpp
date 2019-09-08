@@ -46,31 +46,46 @@ void priceGeneration(int* ptrRightPrice)
 	}
 }
 
-void bestThreeGames(std::array<int, SCORE_NUMBER> *ptrArrayScores, int *tries)
+void bestThreeGames(std::array<int, SCORE_NUMBER> &aScores, int *tries)
 {
+	auto newHighScore{ false };
+	
+	sort(aScores);
 
-	auto scoreMin{ (*ptrArrayScores)[0] }, cursor{ 0 };
-
-	for (auto i{ 1 }; i < ptrArrayScores->size(); i++) {
-		if ((*ptrArrayScores)[i] < scoreMin) {
-			scoreMin = (*ptrArrayScores)[i]; 
-			cursor = i;
+	for (auto i{ 0 }; !newHighScore && i < SCORE_NUMBER; i++) {
+		if (aScores[i] == 0 || aScores[i] > *tries) {
+			for (auto j{ SCORE_NUMBER - 1}; j > i; j--) {
+				aScores[j] = aScores[j - 1];
+			}
+			aScores[i] = *tries;
+			newHighScore = true;
 		}
 	}
-
-	(*ptrArrayScores)[cursor] = *tries;
 }
 
-void rank(std::array<int, SCORE_NUMBER> *ptrArrayScore)
+void sort(std::array<int, SCORE_NUMBER> &aScores)
 {
 	auto scoreMin{0};
-	for (auto i{ 0 }; i < ptrArrayScore->size - 1; i++) {
-		auto currentScore{ (*ptrArrayScore)[i] };
-		auto nextScore{ (*ptrArrayScore)[i+1] };
+	for (auto i{ 0 }; i < SCORE_NUMBER - 1; i++) {
+		auto currentScore{ aScores[i] };
+		auto nextScore{ aScores[i+1] };
+
 		if (nextScore < currentScore) {
 			scoreMin = nextScore;
 			nextScore = currentScore;
 			currentScore = scoreMin;
+		}
+	}
+}
+
+void printScores(std::array<int, SCORE_NUMBER> aScores)
+{
+	for (auto i{ 0 }; i < SCORE_NUMBER; i++) {
+		if (aScores[i] == 0) {
+			cout << "-" << endl;
+		}
+		else {
+			cout << aScores[i] << endl;
 		}
 	}
 }

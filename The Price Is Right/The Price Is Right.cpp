@@ -27,17 +27,21 @@ int main()
 
 		} while (proposal != rightPrice);
 
-		cout << "Tries : " << tries << endl;	
+		cout << "Tries : " << tries << endl;
+
+		bestThreeGames(scores, &tries);
+
+		tries = 0;
 
 		games++;
 
 		selection = playerChoice();
 
 		if (selection == MenuChoices::SCORES) {
-			bestThreeGames(&scores, &tries);
+			printScores(scores);		
 		}
 
-	} while (selection == MenuChoices::PLAY);
+	} while (selection != MenuChoices::QUIT);
 
 	cout << "You have played " << games << " games !" << endl << "Thank you for playing !" << endl;
 

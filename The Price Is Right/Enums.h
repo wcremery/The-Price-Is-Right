@@ -2,9 +2,9 @@
 
 enum class MenuChoices
 {
-	PLAY = 0,
-	SCORES = 1,
-	QUIT = 2
+	PLAY = 1,
+	SCORES = 2,
+	QUIT = 3
 };
 
 enum class DifficultyChoices
