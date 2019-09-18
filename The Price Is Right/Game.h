@@ -10,10 +10,9 @@
 #include "enums.h"
 #include "Player.h"
 
+using duration = std::chrono::system_clock;
 
-// reference pas de pointeur pareil pour gamestatus du coup dans l'appel pas de pointeur utiliser la variable tel quel
-
-void gameStatus(int pRightPrice, int pProposal, int *ptrTries);
+void gameStatus(int pRightPrice, int pProposal, int *ptrTries, duration *ptrChrono);
 
 void priceGeneration(int *ptrRightPrice);
 
@@ -21,4 +20,4 @@ void bestThreeGames(std::array<int, SCORE_NUMBER> &aScores, int *pTries);
 
 void printScores(std::array<int, SCORE_NUMBER> scores);
 
-void sort(std::array<int, SCORE_NUMBER>& aScores);
+void sort(std::array<int, SCORE_NUMBER> &aScores);

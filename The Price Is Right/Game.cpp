@@ -2,7 +2,9 @@
 
 using namespace std;
 
-void gameStatus(int pRightPrice, int pProposal, int* ptrTries)
+using scoreBoard = std::array<int, SCORE_NUMBER>;
+
+void gameStatus(int pRightPrice, int pProposal, int *ptrTries, duration *ptrChrono)
 {
 	if (pProposal >= 0) {
 
@@ -23,7 +25,7 @@ void gameStatus(int pRightPrice, int pProposal, int* ptrTries)
 	}
 }
 
-void priceGeneration(int* ptrRightPrice)
+void priceGeneration(int *ptrRightPrice)
 {
 	DifficultyChoices difficulty;
 
@@ -46,7 +48,7 @@ void priceGeneration(int* ptrRightPrice)
 	}
 }
 
-void bestThreeGames(std::array<int, SCORE_NUMBER> &aScores, int *tries)
+void bestThreeGames(scoreBoard &aScores, int *tries)
 {
 	auto newHighScore{ false };
 	
@@ -63,7 +65,7 @@ void bestThreeGames(std::array<int, SCORE_NUMBER> &aScores, int *tries)
 	}
 }
 
-void sort(std::array<int, SCORE_NUMBER> &aScores)
+void sort(scoreBoard &aScores)
 {
 	auto scoreMin{0};
 	for (auto i{ 0 }; i < SCORE_NUMBER - 1; i++) {
@@ -78,7 +80,7 @@ void sort(std::array<int, SCORE_NUMBER> &aScores)
 	}
 }
 
-void printScores(std::array<int, SCORE_NUMBER> aScores)
+void printScores(scoreBoard aScores)
 {
 	for (auto i{ 0 }; i < SCORE_NUMBER; i++) {
 		if (aScores[i] == 0) {

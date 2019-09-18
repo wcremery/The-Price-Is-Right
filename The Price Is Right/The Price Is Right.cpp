@@ -6,11 +6,14 @@
 
 using namespace std;
 
+using scoreBoard = array<int, SCORE_NUMBER>;
+
 int main()
 {	
 	auto rightPrice{ 0 }, proposal{ 0 }, tries{ 0 }, games{ 0 };
 	auto selection{ MenuChoices::PLAY };
-	auto scores = array<int, SCORE_NUMBER>{0, 0, 0};
+	auto scores = scoreBoard{0, 0, 0};
+	auto startChrono = chrono::system_clock::now;
 
 	cout << "Welcome to The Price Is Right !" << endl;
 
@@ -23,7 +26,7 @@ int main()
 
 			cin >> proposal;
 
-			gameStatus(rightPrice, proposal, &tries);
+			gameStatus(rightPrice, proposal, &tries, &startChrono);
 
 		} while (proposal != rightPrice);
 
@@ -38,7 +41,7 @@ int main()
 		selection = playerChoice();
 
 		if (selection == MenuChoices::SCORES) {
-			printScores(scores);		
+			printScores(scores);
 		}
 
 	} while (selection != MenuChoices::QUIT);
