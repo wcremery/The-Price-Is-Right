@@ -26,7 +26,7 @@ int main()
 
 			cin >> proposal;
 
-			gameStatus(rightPrice, proposal, &tries, &startChrono);
+			gameStatus(rightPrice, proposal, &tries);
 
 		} while (proposal != rightPrice);
 

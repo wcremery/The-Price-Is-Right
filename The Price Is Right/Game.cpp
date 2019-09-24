@@ -4,7 +4,7 @@ using namespace std;
 
 using scoreBoard = std::array<int, SCORE_NUMBER>;
 
-void gameStatus(int pRightPrice, int pProposal, int *ptrTries, duration *ptrChrono)
+void gameStatus(int pRightPrice, int pProposal, int *ptrTries)
 {
 	if (pProposal >= 0) {
 

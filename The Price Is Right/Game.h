@@ -10,9 +10,7 @@
 #include "enums.h"
 #include "Player.h"
 
-using duration = std::chrono::system_clock;
-
-void gameStatus(int pRightPrice, int pProposal, int *ptrTries, duration *ptrChrono);
+void gameStatus(int pRightPrice, int pProposal, int *ptrTries);
 
 void priceGeneration(int *ptrRightPrice);
 
