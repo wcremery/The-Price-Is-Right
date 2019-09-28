@@ -4,21 +4,21 @@ using namespace std;
 
 void gameStatus(int pRightPrice, int pProposal, int *ptrTries)
 {
-	if (pProposal >= 0) {
+	if (pProposal >= 0) 
+	{
 
-		if (pProposal == pRightPrice) {
-			cout << "You win !" << endl;
+		if (pProposal > pRightPrice) 
+		{
+			cout << "It's less !" << endl;
 		}
 		else if (pProposal < pRightPrice) {
 			cout << "It's more !" << endl;
 		}
-		else {
-			cout << "It's less !" << endl;
-		}
 
 		(*ptrTries)++;
 	}
-	else {
+	else 
+	{
 		cout << "Come on ! The right price can not be negative !" << endl;
 	}
 }
@@ -52,10 +52,13 @@ void bestThreeGames(scoreBoard &aScores, int *tries)
 	
 	sort(aScores);
 
-	for (auto i{ 0 }; !newHighScore && i < SCORE_NUMBER; i++) {
-		if (aScores[i] == 0 || aScores[i] > *tries) {
-			for (auto j{ SCORE_NUMBER - 1}; j > i; j--) {
-				aScores[j] = aScores[j - 1];
+	for (auto i{ 0 }; !newHighScore && i < SCORE_NUMBER; i++) 
+	{
+		if (aScores[i] == 0 || aScores[i] > *tries) 
+		{
+			for (auto j{ SCORE_NUMBER - 1}; j > i; j--) 
+			{
+				aScores[j] = aScores[j--];
 			}
 			aScores[i] = *tries;
 			newHighScore = true;
@@ -66,11 +69,13 @@ void bestThreeGames(scoreBoard &aScores, int *tries)
 void sort(scoreBoard &aScores)
 {
 	auto scoreMin{0};
-	for (auto i{ 0 }; i < SCORE_NUMBER - 1; i++) {
+	for (auto i{ 0 }; i < SCORE_NUMBER - 1; i++) 
+	{
 		auto currentScore{ aScores[i] };
-		auto nextScore{ aScores[i+1] };
+		auto nextScore{ aScores[i++] };
 
-		if (nextScore < currentScore) {
+		if (nextScore < currentScore) 
+		{
 			scoreMin = nextScore;
 			nextScore = currentScore;
 			currentScore = scoreMin;
@@ -78,13 +83,16 @@ void sort(scoreBoard &aScores)
 	}
 }
 
-void printScores(scoreBoard aScores)
+void printScores(scoreBoard &aScores)
 {
-	for (auto i{ 0 }; i < SCORE_NUMBER; i++) {
-		if (aScores[i] == 0) {
+	for (auto i{ 0 }; i < SCORE_NUMBER; i++) 
+	{
+		if (aScores[i] == 0) 
+		{
 			cout << "-" << endl;
 		}
-		else {
+		else 
+		{
 			cout << aScores[i] << endl;
 		}
 	}

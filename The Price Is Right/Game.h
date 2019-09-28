@@ -16,8 +16,10 @@ void gameStatus(int pRightPrice, int pProposal, int *ptrTries);
 
 void priceGeneration(int *ptrRightPrice);
 
-void bestThreeGames(std::array<int, SCORE_NUMBER> &aScores, int *pTries);
+// If it's a new high score insert it in the scoreBoard
+void bestThreeGames(scoreBoard &aScores, int *pTries);
 
-void printScores(std::array<int, SCORE_NUMBER> scores);
+void printScores(scoreBoard &aScores);
 
-void sort(std::array<int, SCORE_NUMBER> &aScores);
+// Sort scoreBoard from smaller to bigger
+void sort(scoreBoard &aScores);
