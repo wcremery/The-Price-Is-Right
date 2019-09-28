@@ -10,6 +10,8 @@
 #include "enums.h"
 #include "Player.h"
 
+using scoreBoard = std::array<int, SCORE_NUMBER>;
+
 void gameStatus(int pRightPrice, int pProposal, int *ptrTries);
 
 void priceGeneration(int *ptrRightPrice);
