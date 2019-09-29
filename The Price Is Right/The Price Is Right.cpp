@@ -15,7 +15,7 @@ int main()
 {	
 	auto rightPrice{ 0 }, proposal{ 0 }, tries{ 0 }, games{ 0 };
 	auto selection{ MenuChoices::PLAY };
-	auto scores = scoreBoard{0, 0, 0};	
+	auto scores = scoreBoard{0, 0, 0};
 
 	cout << "Welcome to The Price Is Right !" << endl;
 
@@ -35,6 +35,8 @@ int main()
 
 		auto timeElapsed = chrono::duration_cast<durations>(finishChrono - startChrono);
 
+		system("CLS"); // clear console
+
 		if (timeElapsed < GAME_DURATION) {
 			cout << "You win !" << endl;
 			cout << "Tries : " << tries << endl;
@@ -44,8 +46,7 @@ int main()
 			cout << "You lose !" << endl;
 			cout << "Time out... You only have " << GAME_DURATION.count() << " seconds to found out The Right Price." << endl << "Time passed : " << timeElapsed.count();
 		}
-		
-
+				
 		tries = 0;
 		games++;
 		selection = playerChoice();

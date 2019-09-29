@@ -25,25 +25,27 @@ void gameStatus(int pRightPrice, int pProposal, int *ptrTries)
 
 void priceGeneration(int *ptrRightPrice)
 {
-	DifficultyChoices difficulty;
+	DifficultyChoices difficulty = playerDifficulty();
 
-	srand(time(NULL));
-
-	difficulty = playerDifficulty();
+	random_device randomGenerator;
+	auto generator = mt19937{randomGenerator()};
+	uniform_int_distribution<int> distribution;
 
 	switch (difficulty) {
 	case DifficultyChoices::EASY:
-		*ptrRightPrice = rand() % EASY_PRICE_MAX + PRICE_MIN;
+		distribution = uniform_int_distribution<int>(PRICE_MIN, EASY_PRICE_MAX);
 		break;
 	case DifficultyChoices::HARDER:
-		*ptrRightPrice = rand() % HARDER_PRICE_MAX + PRICE_MIN;
+		distribution = uniform_int_distribution<int>(PRICE_MIN, HARDER_PRICE_MAX);
 		break;
 	case DifficultyChoices::HARDEST:
-		*ptrRightPrice = rand() % HARDEST_PRICE_MAX + PRICE_MIN;
+		distribution = uniform_int_distribution<int>(PRICE_MIN, HARDEST_PRICE_MAX);
 		break;
 	default:
-		*ptrRightPrice = rand() % EASY_PRICE_MAX + PRICE_MIN;
+		EXIT_FAILURE;
 	}
+
+	*ptrRightPrice = distribution(generator);
 }
 
 void bestThreeGames(scoreBoard &aScores, int *tries)

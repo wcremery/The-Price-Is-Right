@@ -2,9 +2,7 @@
 
 #include <iostream>     /* cout, cin, endl */
 #include <array>
-#include <stdio.h>      /* printf, scanf, puts, NULL */
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+#include <random>
 
 #include "constants.h"
 #include "enums.h"
