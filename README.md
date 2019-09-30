@@ -1,2 +1,2 @@
 # The-Price-Is-Right
-Project 1
+Console Game (Project 1)
